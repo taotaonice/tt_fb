@@ -12,3 +12,6 @@ echo 'dbus-launch --exit-with-session gnome-session &' >> ~/.vnc/xstartup
 echo 'vncserver -localhost no -geometry 800x600 -depth 24 :1' > ~/vnc.sh
 echo 'vncserver -kill :1' > ~/kill.sh
 chmod +x ~/*.sh
+
+wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+sudo dpkg -i google*.deb
