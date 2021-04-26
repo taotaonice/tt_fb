@@ -184,7 +184,7 @@ def semi_automatic_machine():
         time.sleep(300)
 
     run_all_and_mine()
-    watch_dog()
+    #watch_dog()
 """
 open_colab_label()
 draw_an_instance()
