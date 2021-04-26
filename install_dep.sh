@@ -10,6 +10,6 @@ pip install pyuserinput
 pip install opencv-python==3.4.0.12
 
 curl https://raw.githubusercontent.com/taotaonice/tt_fb/master/miner_robot.py > miner_robot.py
-curl https://raw.githubusercontent.com/taotaonice/tt_fb/master/install_dep.sh > update.sh
+echo "curl https://raw.githubusercontent.com/taotaonice/tt_fb/master/miner_robot.py > miner_robot.py" > update.sh
 
 
