@@ -158,6 +158,17 @@ def run_all_and_mine():
     k.type_string('./run.sh ')
     k.tap_key(k.enter_key)
 
+def watch_dog():
+    now = time.time()
+    while True:
+        if time.time() - now >= 60*60*24:
+            break
+        cksum = get_crop_sum(15, 108, 40, 40)
+        if cksum != 985667:
+            m.click(330, 534, 1)
+            k.tap_key(k.function_keys[5])
+        time.sleep(300)
+
 
 def semi_automatic_machine():
     open_colab_label()
@@ -173,6 +184,7 @@ def semi_automatic_machine():
         time.sleep(300)
 
     run_all_and_mine()
+    watch_dog()
 """
 open_colab_label()
 draw_an_instance()
