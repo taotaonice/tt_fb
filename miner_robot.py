@@ -225,7 +225,7 @@ def semi_automatic_machine():
             break
         else:
             reset_instance()
-        time.sleep(600)
+        time.sleep(300)
 
     run_all_and_mine()
 
