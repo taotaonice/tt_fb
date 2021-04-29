@@ -12,12 +12,16 @@ from pymouse import PyMouse
 from pykeyboard import PyKeyboard
 import pyperclip
 import time
+import sys
 
 m = PyMouse()
 k = PyKeyboard()
 
 dsp = display.Display()
 root = dsp.screen().root
+
+last_end_time = time.time()
+cur_end_time = time.time() - 24*60*60 - 600
 
 def cvshow(mat, title=''):
     cv2.imshow(title, mat)
@@ -75,6 +79,7 @@ def open_colab_label(toggle=False):
     print('open colab label ready')
 
 def check_gpu():
+    time.sleep(5)
     k.tap_key(k.home_key)
     time.sleep(0.5)
     m.click(120, 414, 1)
@@ -157,6 +162,7 @@ def run_all_and_mine():
     time.sleep(0.5)
     k.type_string('./run.sh ')
     k.tap_key(k.enter_key)
+    time.sleep(1)
 
 def watch_dog():
     now = time.time()
@@ -169,8 +175,46 @@ def watch_dog():
             k.tap_key(k.function_keys[5])
         time.sleep(300)
 
+def close_and_swap():
+    time.sleep(2)
+    k.press_key(k.control_key)
+    k.tap_key('w')
+    k.release_key(k.control_key)
+    time.sleep(3)
+    m.click(767, 133, 1)
+    ready = False
+    while not ready:
+        cksum = get_crop_sum(457, 185, 54, 44)
+        print(cksum)
+        ready = cksum == 1817640
+        time.sleep(1)
+    m.click(550, 422, 1)
+    time.sleep(2)
+    k.press_key(k.control_key)
+    time.sleep(0.5)
+    k.tap_key(k.tab_key)
+    time.sleep(3)
+    k.tap_key('w')
+    time.sleep(1)
+    k.release_key(k.control_key)
+
+    ready = False
+    while not ready:
+        cksum = get_crop_sum(20, 38, 16, 11)
+        ready = cksum == 87681
+        time.sleep(1)
+    m.press(223, 593, 1)
+    time.sleep(1)
+    m.move(647, 593)
+    time.sleep(1)
+    m.release(647, 593, 1)
+    time.sleep(1)
+
+    m.click(206, 553, 1, 2)
+
 
 def semi_automatic_machine():
+    time.sleep(2)
     open_colab_label()
     V100 = False
     while not V100:
@@ -184,16 +228,24 @@ def semi_automatic_machine():
         time.sleep(300)
 
     run_all_and_mine()
-    #watch_dog()
-"""
-open_colab_label()
-draw_an_instance()
-time.sleep(2)
-check_gpu()
-reset_instance()
-close_label()
-"""
 
-semi_automatic_machine()
+
+while True:
+    if time.time() - cur_end_time >= 24*60*60 + 600:
+        semi_automatic_machine()
+        down = False
+        while not down:
+            time.sleep(300)
+            cksum = get_crop_sum(538, 171, 73, 19)
+            down = cksum == 941148
+        cur_end_time = time.time()
+        close_and_swap()
+        last_end_time, cur_end_time = cur_end_time, last_end_time
+
+        wait_time = cur_end_time + 24*60*60 + 600 - time.time()
+        if wait_time > 0:
+            time.sleep(wait_time)
+    else:
+        time.sleep(60)
 
 dsp.close()
