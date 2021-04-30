@@ -1,4 +1,6 @@
 
+
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -84,6 +86,7 @@ def check_gpu():
     time.sleep(0.5)
     m.click(120, 414, 1)
     time.sleep(1)
+    """
     m.press(196, 414, 1)
     time.sleep(1)
     m.release(238, 414, 1)
@@ -97,6 +100,14 @@ def check_gpu():
         return True
     else:
         print('P100')
+        return False
+    """
+    cksum = get_crop_sum(204, 406, 30, 20)
+    if cksum == 417021:
+        print('V100')
+        return True
+    else:
+        print('V100')
         return False
 
 def draw_an_instance():
