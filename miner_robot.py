@@ -1,6 +1,3 @@
-
-
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
@@ -107,7 +104,7 @@ def check_gpu():
         print('V100')
         return True
     else:
-        print('P100')
+        print('V100')
         return False
 
 def draw_an_instance():
@@ -192,6 +189,8 @@ def close_and_swap():
     k.tap_key('w')
     k.release_key(k.control_key)
     time.sleep(3)
+    m.click(768, 594, 1)
+    time.sleep(1)
     m.click(767, 133, 1)
     ready = False
     while not ready:
@@ -249,6 +248,23 @@ while True:
             time.sleep(300)
             cksum = get_crop_sum(538, 171, 73, 19)
             down = cksum == 941148
+            cksum = get_crop_sum(5, 107, 80, 53)
+            # crash...
+            if cksum == 2946800:
+                m.click(293, 492, 1)
+                time.sleep(1)
+                k.tap_key(k.function_keys[5])
+                k.press_key(k.control_key)
+                k.tap_key(k.tab_key)
+                k.release_key(k.control_key)
+                time.sleep(3)
+                k.tap_key(k.function_keys[5])
+                time.sleep(3)
+                k.press_key(k.control_key)
+                k.tap_key(k.tab_key)
+                k.release_key(k.control_key)
+
+            #
         cur_end_time = time.time()
         close_and_swap()
         last_end_time, cur_end_time = cur_end_time, last_end_time
