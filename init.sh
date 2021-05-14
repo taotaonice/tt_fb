@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo apt update
 sudo apt install xserver-xorg-core tigervnc-* ubuntu-gnome-desktop python-pip screen
 
 # pip install pyperclip
@@ -25,5 +26,5 @@ echo 'vncserver -localhost no -geometry 800x600 -depth 24 :1' > ~/vnc.sh
 echo 'vncserver -kill :1' > ~/kill.sh
 chmod +x ~/*.sh
 
-wget "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+wget -c "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
 sudo dpkg -i google*.deb
