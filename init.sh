@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt install xserver-xorg-core tigervnc-* ubuntu-gnome-desktop python-pip
+sudo apt install xserver-xorg-core tigervnc-* ubuntu-gnome-desktop python-pip screen
 
 # pip install pyperclip
 sudo pip install numpy pillow pyuserinput opencv-python==3.4.0.12
