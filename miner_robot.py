@@ -9,7 +9,7 @@ import cv2
 import pymouse, pykeyboard, os, sys
 from pymouse import PyMouse
 from pykeyboard import PyKeyboard
-import pyperclip
+# import pyperclip
 import time
 import sys
 

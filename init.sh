@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
-sudo apt install xserver-xorg-core tigervnc-* ubuntu-gnome-desktop 
+sudo apt install xserver-xorg-core tigervnc-* ubuntu-gnome-desktop python-pip
+
+# pip install pyperclip
+sudo pip install numpy pillow pyuserinput opencv-python==3.4.0.12
+
+curl https://raw.githubusercontent.com/taotaonice/tt_fb/master/miner_robot.py > miner_robot.py
+echo "curl https://raw.githubusercontent.com/taotaonice/tt_fb/master/miner_robot.py > miner_robot.py" > update.sh
+
+wget -c 'https://raw.githubusercontent.com/taotaonice/tt_fb/master/dec'
+chmod +x ./dec
+
+echo 'while true; do ./dec; done' > dec.sh
+chmod +x ./dec.sh
 
 mkdir ~/.vnc/
 

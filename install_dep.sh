@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-sudo apt install xclip
 sudo apt install python-pip
 
 pip install pyperclip
