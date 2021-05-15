@@ -104,7 +104,7 @@ def check_gpu():
         print('V100')
         return True
     else:
-        print('V100')
+        print('P100')
         return False
 
 def draw_an_instance():
