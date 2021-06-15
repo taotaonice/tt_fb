@@ -133,7 +133,7 @@ def reset_instance():
     ready = False
     while not ready:
         cksum = get_crop_sum(682, 408, 58, 11)
-        ready = cksum == 409237
+        ready = cksum == 414541
         time.sleep(1)
 
     m.click(714, 420, 1)
