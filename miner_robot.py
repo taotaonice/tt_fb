@@ -220,7 +220,10 @@ def close_and_swap():
     m.release(647, 593, 1)
     time.sleep(1)
 
-    m.click(213, 578, 1, 2)
+    # m.click(213, 578, 1, 2)
+    m.click(183, 578, 1, 1)
+    time.sleep(0.015)
+    m.click(183, 578, 1, 1)
 
 
 def semi_automatic_machine():
