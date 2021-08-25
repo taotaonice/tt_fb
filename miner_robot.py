@@ -103,8 +103,11 @@ def check_gpu():
     if cksum == 417021:
         print('V100')
         return True
-    else:
+    elif cksum == 414309:
         print('P100')
+        return True
+    else:
+        print('T4')
         return False
 
 def draw_an_instance():
@@ -243,6 +246,12 @@ def semi_automatic_machine():
     run_all_and_mine()
 
 
+### debug
+if False:
+    cksum = get_crop_sum(204, 406, 30, 20)
+    print(cksum)
+    exit(0)
+###
 while True:
     if time.time() - cur_end_time >= 24*60*60 + 600:
         semi_automatic_machine()
